@@ -52,12 +52,12 @@ function findDeferredDecorator(
 
 // decorateField v1
 export function f(
-  target: { prototype: object },
+  target: { prototype?: object },
   prop: string | number | symbol,
   decorators: LegacyDecorator[],
   initializer?: () => any
 ): void {
-  return g(target.prototype, prop, decorators, initializer);
+  return g(target.prototype ? target.prototype || target, prop, decorators, initializer);
 }
 
 // decorateField v2
